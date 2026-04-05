@@ -1,0 +1,54 @@
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+
+  <defs>
+    <!-- Soft Glow -->
+    <filter id="orb-glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- SMOOTH CURVED PATH (lava lamp style) -->
+    <path id="flow-path"
+      d="
+        M45 30
+        C45 50, 45 70, 45 90
+        C45 70, 60 60, 75 35
+        C60 60, 60 60, 75 85
+        C60 60, 45 70, 45 30
+      "
+      fill="none"/>
+  </defs>
+
+  <!-- K Shape -->
+  <g stroke="white" stroke-width="10" stroke-linecap="round" fill="none" opacity="0.9">
+
+    <!-- Broken vertical -->
+    <line x1="45" y1="25" x2="45" y2="52"/>
+    <line x1="45" y1="68" x2="45" y2="95"/>
+
+    <!-- Diagonals -->
+    <line x1="45" y1="60" x2="75" y2="30"/>
+    <line x1="45" y1="60" x2="75" y2="90"/>
+
+  </g>
+
+  <!-- Lava Orb -->
+  <circle r="5" fill="#00d277ff" filter="url(#orb-glow)" opacity="0.9">
+
+    <!-- Smooth breathing -->
+    <animate attributeName="r"
+      values="5;7;5"
+      dur="2.5s"
+      repeatCount="indefinite" />
+
+    <!-- Smooth floating motion -->
+    <animateMotion dur="8s" repeatCount="indefinite" rotate="auto">
+      <mpath href="#flow-path"/>
+    </animateMotion>
+
+  </circle>
+
+</svg>
